@@ -30,10 +30,11 @@ def iniciar_reconocimiento():
                 )
 
                 audio = reconocedor.listen(mic, timeout=120, phrase_time_limit=120)
-                texto = reconocedor.recognize_google(audio, language="es-ES").lower()
+                texto = reconocedor.recognize_google(audio, language="es-ES")
+                texto = texto.lower().strip()
                 print("Estas son tus palabras -->", texto)
 
-                ahora = datetime.now
+                ahora = datetime.now()
                 fecha = ahora.strftime("%Y-%m-%d")
                 hora = ahora.strftime("%H")
                 minutos = ahora.strftime("%M")
@@ -44,7 +45,7 @@ def iniciar_reconocimiento():
                     "C:/Users/ale50/OneDrive/Escritorio/Pyhton/creador-excel-py/excel.xlsx"
                 )
 
-                if "sair" == texto:
+                if "salir" == texto:
                     print("Haz terminado el programa")
                     break
         except sr.UnknownValueError:
